@@ -5,11 +5,13 @@ import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 import { inspectAttr } from 'kimi-plugin-inspect-react'
 
-// https://vite.dev/config/
 export default defineConfig({
+  base: '/kuesioner/', 
   plugins: [
-    devServer({ entry: "api/boot.ts", exclude: [/^\/(?!api\/).*$/] }),
-    inspectAttr(), react()],
+    devServer({ entry: "api/boot.ts", exclude: [/^\/(?!api\/).*/] }),
+    inspectAttr(), 
+    react()
+  ],
   server: {
     port: 3000,
   },
@@ -21,9 +23,4 @@ export default defineConfig({
       "db": path.resolve(__dirname, "./db"),
     },
   },
-  envDir: path.resolve(__dirname),
-  build: {
-    outDir: path.resolve(__dirname, "dist/public"),
-    emptyOutDir: true,
-  },
-});
+})
